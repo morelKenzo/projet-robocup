@@ -1,4 +1,5 @@
 # projet-robocup
+Codes pour faire fonctionner le robot de la FC PT
 <h1>Structure du projet</h1>
 <h2>main.py</h2>
 Décrit le comportement du robot à l'aide des différents modules
