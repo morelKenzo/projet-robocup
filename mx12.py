@@ -69,7 +69,7 @@ def build_frame(idMot, instruction, typeRegistre, value):
     return frame
 
 
-class Roue:
+class Roue():
     def __init__(self, idMot):
         self.idMdot = idMot
 
