@@ -1,22 +1,21 @@
 from microbit import *
 import radio
 
-cannal = 10 #definition du canal de communication avec le moteur.
+canal = 10 #definition du canal de communication avec le moteur.
 
 
 
 #initialisation de la radio
-radio.config(cannal)
+radio.config(canal)
 radio.on()
 
 
 
 
 
-def reception(message):
-	message = radio.receive
+def reception():
+	message = radio.receive()
         if message :
-
             listMessage = message.split(",") #on découpe le message d'entrée avec les virgules /!\ au protocole de communication avec Noah
             if listMessage[-1] == "fin":
                 
@@ -26,5 +25,10 @@ def reception(message):
                 tir = int(listMessage[3])
                 passe = int(listMessage[4])
                 dribble = int(listMessage[5])
-            message = False
-	return vitesse_long
+            
+	return vit_x,vit_y,vit_rot,tir,passe,dribble
+
+
+
+
+	
