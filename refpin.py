@@ -5,7 +5,10 @@ refpin.py :
     Les pins utilisées sont référencés dans
     ce module avec des noms clairs.
 """
+<<<<<<< HEAD
 
+=======
+>>>>>>> e1e21c8eea3ba05c46c76c2ac222ac00692b8b01
 id_mot1 = 3
 pin_charge_condo = pin8
 pin_tir = pin16
