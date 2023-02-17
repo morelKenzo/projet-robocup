@@ -1,10 +1,10 @@
-""" Controle d'un dynamixel par Kenzo Morel-Handa """
 from microbit import *
 from refpin import pin_tx
 from refpin import pin_rx
 
-uart.init(baudrate=115200, tx=pin_tx, rx=pin_rx)
-
+def initialisation_uart():
+    # Initialise le protocole uart pour le mx12
+    uart.init(baudrate=115200, tx=pin_tx, rx=pin_rx)
 
 def build_frame(idMot, instruction, typeRegistre, value):
     """
@@ -70,9 +70,30 @@ def build_frame(idMot, instruction, typeRegistre, value):
 
 
 class Roue():
-    def __init__(self, idMot):
+    def __init__(self, idMot, angle_roue, position_roue_x, position_roue_y):
+        self.rayon_roue = 0.019
         self.idMdot = idMot
+        # Position angulaire de la roue par rapport au repere du robot
+        self.angle_roue = angle_roue
+        # Position de la roue rapport au repere du robot
+        self.position_roue_x = position_roue_x
+        self.position_roue_y = position_roue_y
 
-    def envoi_vitesse(self, vitesse):
+    def consigne_vitesse(self, vitesse):
+        # Envoie une consigne de vitesse au moteur MX12
         frame = build_frame("write", "speedGoal", vitesse)
         uart.write(frame)
+
+    def deplacement(self, vit_x, vit_y, vit_rot):
+        """
+        Prend en arguments :
+        - vit_x : (float) vitesse de translation laterale qu'on aimerait avoir sur le robot
+        - vit_y : (float) vitesse de translation longitudinal qu'on aimerait avoir sur le robot
+        - vit_rot : (float) vitesse de rotation propre du robot qu'on aimerait avoir
+        Envoie une consigne de vitesse au moteur afin que l'ensemble des roues puissent
+        deplacer le robot comme souhaite
+        """
+        # Calcul de la vitesse angulaire du moteur MX12 (cf formule documentation)
+        vitesse_mot = (sin(self.angle_roue)*vit_x - cos(self.angle_roue)*vit_y + (self.position_roue_x*cos(self.angle_roue)+self.position_roue_y*sin(self.angle_roue))*vit_rot)/self.rayon_roue
+        # Envoie la consigne
+        consigne_vitesse(vitesse_mot)
