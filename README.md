@@ -10,7 +10,11 @@ Module où sont définis les fonctions de commande de charge du condensateur
 et de commande de tir.
 
 
-Toto
+
 
 <h2>mx12.py</h2>
 Module pour le contrôle des moteurs mx12
+
+
+<h2>telecom.py</h2>
+Module pour la communication radio avec le coach
