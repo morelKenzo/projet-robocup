@@ -85,7 +85,7 @@ class Roue():
         Prend en arguments une consigne de vitesse en rad/s
         """
         vitesse_rpm = (60/(2*pi))*vitesse # Convertit la vitesse de consigne en tour/min
-        vitesse_alg = int((1023/937.1)*valRPM) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)*
+        vitesse_alg = int((1023/937.1)*valRPM) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
         # En fonction du signe de la vitesse, on met la vitesse dans la plage [0, 1023] ou dans [1024, 2048]
         if vitesse_alg >= 0 :
             vitesse_2048 = vitesse_alg
