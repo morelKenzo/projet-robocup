@@ -4,7 +4,7 @@ import radio
 canal = 10 #definition du canal de communication avec le moteur.
 
 #initialisation de la radio
-radio.config(canal)
+radio.config(group = canal)
 radio.on()
 
 def reception():
