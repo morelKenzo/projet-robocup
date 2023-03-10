@@ -1,7 +1,7 @@
-from microbit import *
+from refpin import pin_charge_condo
+from refpin import pin_tir
 
-
-def charge_condo(pin_charge_condo):
+def charge_condo():
     """
     Prend en argument l'objet associé au pin
     de commande de charge de condensateur.
@@ -10,7 +10,7 @@ def charge_condo(pin_charge_condo):
     pin_charge_condo.write_digital(1)
 
 
-def commande_tir(pin_charge_condo, pin_tir, prct):
+def commande_tir(prct):
     """
     Prend en arguments les objets associés aux pins
     pin_charge_condo et pin_tir, et un entier prct.
@@ -22,3 +22,5 @@ def commande_tir(pin_charge_condo, pin_tir, prct):
     pin_tir.write_digital(1)
     sleep(20 * (prct / 100))
     pin_tir.write_digital(0)
+    charge_condo()
+    
