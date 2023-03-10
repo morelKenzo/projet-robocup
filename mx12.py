@@ -92,7 +92,7 @@ class Roue():
         
         uart.write(frame)
 
-    def deplacement(self, vit_x, vit_y, vit_rot):
+    def deplacement(self, vit_y, vit_x, vit_rot):
         """
         Prend en arguments :
         - vit_x : (float) vitesse de translation laterale qu'on aimerait avoir sur le robot
@@ -107,13 +107,13 @@ class Roue():
         self.consigne_vitesse(vitesse_mot)
 
 
-th1, th2, th3 = 2.64, 0.523, 4.74 
-x1,y1 = -0.0616, 0.0376 #moteur gauche
-x2,y2 = 0.0616, 0.0376 #moteur droit
+th1, th2, th3 = 0.523, 2.618, 4.712    
+x1,y1 = 0.0616, 0.0376 #moteur droit
+x2,y2 = -0.0616, 0.0376 #moteur gauche
 x3,y3 = 0, -0.072 #moteur arriere
-mot1, mot2, mot3 = Roue(3,th1,x1,y1), Roue(2,th2,x2,y2), Roue(1,th3,x3,y3)
+mot1, mot2, mot3 = Roue(1,th1,x1,y1), Roue(2,th2,x2,y2), Roue(3,th3,x3,y3)
 
 def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
-    mot1.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot2.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot3.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
