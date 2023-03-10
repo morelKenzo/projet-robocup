@@ -10,7 +10,11 @@ def testRoutine():
 
     deplacement_robot(200,0,0)
     sleep(1000)
+    deplacement_robot(0,200,0)
+    sleep(1000)
     deplacement_robot(-200,0,0)
+    sleep(1000)
+    deplacement_robot(0,-200,0)
     sleep(1000)
     deplacement_robot(0,0,0)
     sleep(1000)
@@ -29,3 +33,6 @@ def testRoutine():
     sleep(1000)
     commande_drible(0)
     sleep(1000)
+
+    
+    
