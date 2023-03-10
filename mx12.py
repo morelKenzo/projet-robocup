@@ -1,10 +1,6 @@
 from microbit import *
-from refpin import pin_tx
-from refpin import pin_rx
+from math import *
 
-def initialisation_uart():
-    # Initialise le protocole uart pour le mx12
-    uart.init(baudrate=115200, tx=pin_tx, rx=pin_rx)
 
 def build_frame(idMot, instruction, typeRegistre, value):
     """
@@ -12,7 +8,7 @@ def build_frame(idMot, instruction, typeRegistre, value):
     idMot : identifiant moteur MX12
     instruction : ping, read ou write
     typeRegistre : ex speedGoal
-    value : valeur à mettre dans le registre
+    value : valeur de vitesse à mettre dans le registre
     renvoie la trame correspondante à la commande.
     """
 
@@ -70,8 +66,9 @@ def build_frame(idMot, instruction, typeRegistre, value):
 
 
 class Roue():
+    
     def __init__(self, idMot, angle_roue, position_roue_x, position_roue_y):
-        self.rayon_roue = 0.019
+        self.rayon_roue = 19
         self.idMdot = idMot
         # Position angulaire de la roue par rapport au repere du robot
         self.angle_roue = angle_roue
@@ -85,13 +82,14 @@ class Roue():
         Prend en arguments une consigne de vitesse en rad/s
         """
         vitesse_rpm = (60/(2*pi))*vitesse # Convertit la vitesse de consigne en tour/min
-        vitesse_alg = int((1023/937.1)*valRPM) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
+        vitesse_alg = int((1023/937.1)*vitesse_rpm) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
         # En fonction du signe de la vitesse, on met la vitesse dans la plage [0, 1023] ou dans [1024, 2048]
         if vitesse_alg >= 0 :
             vitesse_2048 = vitesse_alg
         else :
             vitesse_2048 = 1024 - vitesse_alg
-        frame = build_frame("write", "speedGoal", vitesse_alg)
+        frame = build_frame(self.idMdot,"write", "speedGoal", vitesse_2048)
+        
         uart.write(frame)
 
     def deplacement(self, vit_x, vit_y, vit_rot):
@@ -106,4 +104,16 @@ class Roue():
         # Calcul de la vitesse angulaire du moteur MX12 (cf formule documentation)
         vitesse_mot = (sin(self.angle_roue)*vit_x - cos(self.angle_roue)*vit_y + (self.position_roue_x*cos(self.angle_roue)+self.position_roue_y*sin(self.angle_roue))*vit_rot)/self.rayon_roue
         # Envoie la consigne
-        consigne_vitesse(vitesse_mot)
+        self.consigne_vitesse(vitesse_mot)
+
+
+th1, th2, th3 = 2.64, 0.523, 4.74 
+x1,y1 = -0.0616, 0.0376 #moteur gauche
+x2,y2 = 0.0616, 0.0376 #moteur droit
+x3,y3 = 0, -0.072 #moteur arriere
+mot1, mot2, mot3 = Roue(3,th1,x1,y1), Roue(2,th2,x2,y2), Roue(1,th3,x3,y3)
+
+def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
+    mot1.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot2.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot3.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,vitesse_rot_mrad_s)
