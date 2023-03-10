@@ -19,3 +19,9 @@ Module pour le contrôle des moteurs mx12
 
 <h2>telecom.py</h2>
 Module pour la communication radio avec le coach
+
+<h2>test.py</h2>
+Description d'un routine de test permettant de valider le bon fonctionnement du robot
+
+<h2>initialisation.py</h2>
+Module decrivant l'initialisation du robot
