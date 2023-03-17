@@ -6,19 +6,18 @@ from initialisation import *
 
 
 def testRoutine():    
-    """Fonction de test qui consiste a faire faire un carré"""
     #test roue
 
     deplacement_robot(200,0,0)
-    sleep(1000)
+    sleep(500)
     deplacement_robot(0,200,0)
-    sleep(1000)
+    sleep(500)
     deplacement_robot(-200,0,0)
-    sleep(1000)
+    sleep(500)
     deplacement_robot(0,-200,0)
-    sleep(1000)
+    sleep(500)
     deplacement_robot(0,0,0)
-    sleep(1000)
+    sleep(500)
     
 
     
@@ -31,9 +30,9 @@ def testRoutine():
 
     #test drible
     commande_drible(20)
-    sleep(1000)
+    sleep(500)
     commande_drible(0)
-    sleep(1000)
+    sleep(500)
 
     
     
