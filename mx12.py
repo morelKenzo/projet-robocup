@@ -168,8 +168,8 @@ def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
     """Programme de déplacement du robot par la commande des 3 moteurs.
     Il faut définir les vitesses longitudinale, latéral et de roation dans la base local du robot.
     """
-    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
 
 
