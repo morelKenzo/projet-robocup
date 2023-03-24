@@ -8,7 +8,7 @@ from drible import *
 canal = 15 #definition du canal de communication avec le coach.
 
 #initialisation de la radio
-radio.config(group = canal)
+radio.config(channel = canal)
 radio.on()
 
 
