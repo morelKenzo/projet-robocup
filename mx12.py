@@ -114,6 +114,6 @@ x3,y3 = 0, -0.072 #moteur arriere
 mot1, mot2, mot3 = Roue(1,th1,x1,y1), Roue(2,th2,x2,y2), Roue(3,th3,x3,y3)
 
 def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
-    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
-    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,vitesse_rot_mrad_s)
+    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
