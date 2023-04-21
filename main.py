@@ -1,6 +1,30 @@
+##################################
+#
+#Programme principal du robot
+#Initialisation de la radio avec le choix du canal
+#Test en faisant faire un carré au robot
+#
+#Ensuite on vérifie l'arrivé de messages et on les traites
+#
+##################################
+
 from microbit import *
-import refpin as rp
-import tircharge
-import mx12
-from telecom import reception
-import drible
+from tircharge import *
+from mx12 import *
+from telecom import *
+from initialisation import *
+from test import *
+import micropython
+micropython.kbd_intr(-1)
+
+initialisation()
+telecom = Telecom(groupe_canal)
+
+# Teste les différentes fonctionnalités su robot.
+# Peut être commenté
+testRoutine()
+
+Tension_robot()
+    
+while True :
+    telecom.receiveCommand()
