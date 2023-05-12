@@ -9,7 +9,8 @@ Ces registres peuvent être changés à l'aide du logiciel dynamixel-wizard :
 <br>
 Il est nécessaire d'avoir un module de communication entre l'ordinateur et les MX12.
 <h3>Identifiants de moteurs</h1>
-
+Les identifiants des moteurs doivent être réglés selon l'image suivante :  
+<img src="./img-readme/moteurs.jpg">
 <h1>Structure du projet</h1>
 
 <h2>main.py</h2>
