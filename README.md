@@ -1,6 +1,16 @@
 # projet-robocup
-Codes pour faire fonctionner le robot ;-) 
+Codes permettant de faire fonctionner les robots du projet Saphire Robocup 2022-2023 .
 
+<h1>Configuration d'un robot</h1>
+<h2>Configuration des moteurs MX12</h1>
+Plusieurs registres sont à modifier sur chaque MX12.
+Ces registres peuvent être changés à l'aide du logiciel dynamixel-wizard :
+<a href="https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/#software-installation"> https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/#software-installation</a>
+<br>
+Il est nécessaire d'avoir un module de communication entre l'ordinateur et les MX12.
+<h3>Identifiants de moteurs</h1>
+Les identifiants des moteurs doivent être réglés selon l'image suivante :  
+<img src="./img-readme/moteurs.jpg">
 <h1>Structure du projet</h1>
 
 <h2>main.py</h2>

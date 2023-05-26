@@ -5,13 +5,10 @@ from telecom import *
 from initialisation import *
 
 
-"""
-Exemple de fonction à mettre dans main pour tester les
-différentes fonctionnalités du robot.
-"""
-
-def testRoutine():
+def testRoutine():    
+    """Fonction de test qui consiste a faire faire un carré"""
     #test roue
+
     deplacement_robot(200,0,0)
     sleep(1000)
     deplacement_robot(0,200,0)
@@ -22,11 +19,16 @@ def testRoutine():
     sleep(1000)
     deplacement_robot(0,0,0)
     sleep(1000)
+    
 
+    
     #test tir
-    charge_condo()
     commande_tir(10)
+    sleep(10)
+    charge_condo()
     sleep(500)
+    
+
 
     #test drible
     commande_drible(20)
@@ -34,3 +36,5 @@ def testRoutine():
     commande_drible(0)
     sleep(1000)
 
+    
+    

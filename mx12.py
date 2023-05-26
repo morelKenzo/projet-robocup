@@ -1,6 +1,17 @@
+##################################
+#
+#Programme de gestion du moteur des roues
+#Création des frame pour les moteurs
+#Création d'un classe roues qui paramètre les moteurs
+#    -définir la vitesse de la roue
+#    -mesure de la tension aux bornes de la roue
+##################################
+
 from microbit import *
 from math import *
+from refpin import *
 
+uart.init(baudrate=115200, tx=pin_tx, rx=pin_rx)
 
 def build_frame(idMot, instruction, typeRegistre, value):
     """
@@ -16,22 +27,24 @@ def build_frame(idMot, instruction, typeRegistre, value):
 
     # Access : Read & Write
     dict_registreRW_HEX = {
-        "ledStatus": 0x19,  # 25
-        "gainD": 0x1A,  # 26
-        "gainI": 0x1B,  # 27
-        "gainP": 0x1C,  # 28
-        "positionGoal": 0x1E,  # 30
-        "speedGoal": 0x20,  # 32
-    }
+            'ledStatus'    : 0x19, # 25
+            'gainD'        : 0x1a, # 26
+            'gainI'        : 0x1b, # 27
+            'gainP'        : 0x1c, # 28
+            'positionGoal' : 0x1e, # 30
+            'speedGoal'    : 0x20, # 32
+            'tension'      :   42
+        }
 
     dict_size = {
-        "ledStatus": 1,
-        "gainD": 1,
-        "gainI": 1,
-        "gainP": 1,
-        "positionGoal": 2,
-        "speedGoal": 2,
-    }
+        'ledStatus'       : 1,
+        'gainD'           : 1,
+        'gainI'           : 1,
+        'gainP'           : 1,
+        'positionGoal'    : 2,
+        'speedGoal'       : 2,
+        'tension'         : 1,
+        }
 
     header = 0xFF
     idMot = idMot
@@ -66,6 +79,8 @@ def build_frame(idMot, instruction, typeRegistre, value):
 
 
 class Roue():
+    """Classe permettant la gestion des moteurs liées au roues.
+    Il faut définir l'identifiant du moteur, l'angle de la roue, la position de la roue selon x puis selon y."""
     
     def __init__(self, idMot, angle_roue, position_roue_x, position_roue_y):
         self.rayon_roue = 19
@@ -84,15 +99,19 @@ class Roue():
         vitesse_rpm = (60/(2*pi))*vitesse # Convertit la vitesse de consigne en tour/min
         vitesse_alg = int((1023/937.1)*vitesse_rpm) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
         # En fonction du signe de la vitesse, on met la vitesse dans la plage [0, 1023] ou dans [1024, 2048]
-        if vitesse_alg >= 0 :
+        if vitesse_alg >= 0 and vitesse_alg < 1024 :
             vitesse_2048 = vitesse_alg
-        else :
+        elif vitesse_alg >= 1024:
+            vitesse_2048 = 1024
+        if vitesse_alg < 0:
             vitesse_2048 = 1024 - vitesse_alg
+        elif vitesse_alg <= -1024:
+            vitesse_2048 = 2048
         frame = build_frame(self.idMdot,"write", "speedGoal", vitesse_2048)
         
         uart.write(frame)
 
-    def deplacement(self, vit_y, vit_x, vit_rot):
+    def deplacement(self, vit_x, vit_y, vit_rot):
         """
         Prend en arguments :
         - vit_x : (float) vitesse de translation laterale qu'on aimerait avoir sur le robot
@@ -102,18 +121,55 @@ class Roue():
         deplacer le robot comme souhaite
         """
         # Calcul de la vitesse angulaire du moteur MX12 (cf formule documentation)
-        vitesse_mot = (sin(self.angle_roue)*vit_x - cos(self.angle_roue)*vit_y + (self.position_roue_x*cos(self.angle_roue)+self.position_roue_y*sin(self.angle_roue))*vit_rot)/self.rayon_roue
+        vitesse_mot = (sin(self.angle_roue)*vit_x - cos(self.angle_roue)*vit_y + (self.position_roue_x**2+self.position_roue_y**2)**0.5 *vit_rot)/self.rayon_roue 
         # Envoie la consigne
         self.consigne_vitesse(vitesse_mot)
 
+    def demandeTension(self):
+        """
+        Procède à la mesure de la tension aux bornes du moteur qui est la tension batterie.
+        """
+        #Faire attention le temps de réponse est paramétrable sur les moteurs donc il n'y a pas beoin de vider le buffer si 100 micro-secondes
+    
+        #Vide buffer
+        tampon=uart.read(1)
+        while tampon!=None:
+            tampon=uart.read(1)
+    
+        trame=build_frame(self.idMdot,'read','tension',1)
+        uart.write(trame)
+    
+        sleep(1)
+    
+        reponse=[]
+        a=0
+        tampon=uart.read(1)
+    
+        while tampon!=None:
+            if a==0:
+                display.set_pixel(0,0,9)
+                a=1
+            else:
+                a=0
+                display.set_pixel(0,0,0)
+            reponse.append(tampon)
+            tampon=uart.read(1)
+        tension_V=int.from_bytes(reponse[-2],'big')/10
+        return(tension_V)
 
-th1, th2, th3 = 0.523, 2.618, 4.712    
-x1,y1 = 0.0616, 0.0376 #moteur droit
-x2,y2 = -0.0616, 0.0376 #moteur gauche
-x3,y3 = 0, -0.072 #moteur arriere
+th1, th2, th3 = 1.047, 3.141, 5.235
+x1,y1= -0.0616, 0.0376 #moteur gauche
+x2,y2 = 0, -0.072 #moteur arriere
+x3,y3 = 0.0616, 0.0376 #moteur droit
+
+#Création des moteurs
 mot1, mot2, mot3 = Roue(1,th1,x1,y1), Roue(2,th2,x2,y2), Roue(3,th3,x3,y3)
 
+#Commande de déplacement pour les moteurs depuis les vitesses locales du robot
 def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
-    mot1.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
-    mot2.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
-    mot3.deplacement(vitesse_long_mm_s,-vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    """Programme de déplacement du robot par la commande des 3 moteurs.
+    Il faut définir les vitesses longitudinale, latéral et de roation dans la base local du robot.
+    """
+    mot1.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot2.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
+    mot3.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
