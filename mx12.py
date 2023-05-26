@@ -99,10 +99,14 @@ class Roue():
         vitesse_rpm = (60/(2*pi))*vitesse # Convertit la vitesse de consigne en tour/min
         vitesse_alg = int((1023/937.1)*vitesse_rpm) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
         # En fonction du signe de la vitesse, on met la vitesse dans la plage [0, 1023] ou dans [1024, 2048]
-        if vitesse_alg >= 0 :
+        if vitesse_alg >= 0 and vitesse_alg < 1024 :
             vitesse_2048 = vitesse_alg
-        else :
+        elif vitesse_alg >= 1024:
+            vitesse_2048 = 1024
+        if vitesse_alg < 0:
             vitesse_2048 = 1024 - vitesse_alg
+        elif vitesse_alg <= -1024:
+            vitesse_2048 = 2048
         frame = build_frame(self.idMdot,"write", "speedGoal", vitesse_2048)
         
         uart.write(frame)
