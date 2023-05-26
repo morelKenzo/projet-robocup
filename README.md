@@ -31,7 +31,6 @@ Module pour le contrôle des moteurs mx12.
 
 
 <h2>telecom.py</h2>
-<<<<<<< HEAD
 Module pour la communication radio avec le coach
 
 <h2>test.py</h2>
