@@ -1,11 +1,6 @@
 ##################################
-#
 # Programme principal du robot
-# Initialisation puis test en faisant faire un carré au robot
-# Ensuite on vérifie l'arrivé de messages et on les traite
-# Configuration possible du canal de transmission et
-# de l'identifiant du robot par le menu.
-#
+# Initialisation, test et reception des messages
 ##################################
 
 from microbit import *
@@ -27,8 +22,6 @@ telecom = Telecom(groupe_canal)
 # Teste les différentes fonctionnalités su robot.
 # Peut être commenté
 testRoutine()
-
-Tension_robot()
     
 while True:
     afficher_menu(idRobot, groupe_canal)

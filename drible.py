@@ -1,10 +1,8 @@
 ##################################
-#
 #Programme de la commande du tir du robot
-#
 ##################################
 
-from refpin import pin_dribbleur #on trouve le pin attitré au dribbleur (pin0)
+from refpin import pin_dribbleur
 
 def commande_drible(prctVitesse):
     """

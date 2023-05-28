@@ -20,21 +20,14 @@ def testRoutine():
     deplacement_robot(0,0,0)
     sleep(1000)
     
-
-    
     #test tir
     commande_tir(10)
     sleep(10)
     charge_condo()
     sleep(500)
     
-
-
     #test drible
     commande_drible(20)
     sleep(1000)
     commande_drible(0)
     sleep(1000)
-
-    
-    
