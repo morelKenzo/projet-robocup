@@ -14,13 +14,13 @@ from tircharge import *
 from mx12 import *
 
 # Régler idRobot soit à 0 soit à 1 
-idRobot = 1
+idRobot = 0
 
 # Le numéro de canal est donné en argument de Telecom
 # Par convention, il doit être égal à :
 # numéro de l'équipe * 10
 # Exemple : pour l'équipe 3, groupe_canal = 30
-groupe_canal = 30
+groupe_canal = 10
 
 def initialisation():
     """Programme d'initialisation du robot:
@@ -32,7 +32,6 @@ def initialisation():
     display.clear()
     # Initialise le protocole uart pour le mx12
     uart.init(baudrate=115200, tx=pin_tx, rx=pin_rx)
-    Tension_robot()
     charge_condo()
 
 

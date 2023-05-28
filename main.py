@@ -1,22 +1,23 @@
 ##################################
 #
-#Programme principal du robot
-#Initialisation de la radio avec le choix du canal
-#Test en faisant faire un carré au robot
-#
-#Ensuite on vérifie l'arrivé de messages et on les traites
+# Programme principal du robot
+# Initialisation puis test en faisant faire un carré au robot
+# Ensuite on vérifie l'arrivé de messages et on les traite
+# Configuration possible du canal de transmission et
+# de l'identifiant du robot par le menu.
 #
 ##################################
 
 from microbit import *
+from menu import *
 from tircharge import *
 from mx12 import *
 from telecom import *
 from initialisation import *
 from test import *
 import micropython
-micropython.kbd_intr(-1)
 
+micropython.kbd_intr(-1)
 initialisation()
 
 # groupe_canal doit être modifié selon le numéro du groupe
@@ -29,5 +30,6 @@ testRoutine()
 
 Tension_robot()
     
-while True :
+while True:
+    afficher_menu(idRobot, groupe_canal)
     telecom.receiveCommand()
