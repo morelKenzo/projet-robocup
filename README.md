@@ -22,7 +22,8 @@ En-dehors du menu, la ligne la plus haute indique l'identifiant du robot
 et la ligne juste en-desssous, le canal de transmission.
 
 <h1>Structure du projet</h1>
-
+Tous les codes relatifs au robot sont dans le répertoire Robot.
+Tous les codes relatifs à l'émetteur sont dans le répertoir PC-Coach. 
 <h2>main.py</h2>
 Décrit le comportement du robot à l'aide des différents modules
 
