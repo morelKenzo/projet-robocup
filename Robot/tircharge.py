@@ -7,6 +7,8 @@ def charge_condo():
     Lance la charge des condensateur pour le tir.
     """
     pin_charge_condo.write_digital(1)
+    sleep(20)
+    pin_charge_condo.write_digital(0)
 
 
 def commande_tir(prct):
