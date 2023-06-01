@@ -1,9 +1,8 @@
 ##################################
-#
 # Programme d'initialisation du robot
 #    -Initialisation de la liaison série des moteurs
 #    -Mesure de la tension et si elle est trop basse(<11V)
-#          on signifie que c'est pas bon avec de la musique
+#     on signifie que c'est pas bon avec de la musique
 ##################################
 
 

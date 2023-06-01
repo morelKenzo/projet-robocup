@@ -14,9 +14,6 @@ import micropython
 
 micropython.kbd_intr(-1)
 initialisation()
-
-# groupe_canal doit être modifié selon le numéro du groupe
-groupe_canal = 30
 telecom = Telecom(groupe_canal)
 
 # Teste les différentes fonctionnalités su robot.

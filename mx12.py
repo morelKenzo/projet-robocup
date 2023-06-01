@@ -1,5 +1,4 @@
 ##################################
-#
 #Programme de gestion du moteur des roues
 #Création des frame pour les moteurs
 #Création d'un classe roues qui paramètre les moteurs
@@ -99,14 +98,10 @@ class Roue():
         vitesse_rpm = (60/(2*pi))*vitesse # Convertit la vitesse de consigne en tour/min
         vitesse_alg = int((1023/937.1)*vitesse_rpm) # Convertit la vitesse dans une plage de 0 à 1023 (937,1 étant la vitesse maximale du moteur)
         # En fonction du signe de la vitesse, on met la vitesse dans la plage [0, 1023] ou dans [1024, 2048]
-        if vitesse_alg >= 0 and vitesse_alg < 1024 :
-            vitesse_2048 = vitesse_alg
-        elif vitesse_alg >= 1024:
-            vitesse_2048 = 1024
-        if vitesse_alg < 0:
-            vitesse_2048 = 1024 - vitesse_alg
-        elif vitesse_alg <= -1024:
-            vitesse_2048 = 2048
+        if vitesse_alg >= 0 :
+            vitesse_2048 = min(vitesse_alg,1023)
+        else :
+            vitesse_2048 = min(1024 - vitesse_alg,2047)
         frame = build_frame(self.idMdot,"write", "speedGoal", vitesse_2048)
         
         uart.write(frame)
@@ -154,7 +149,10 @@ class Roue():
                 display.set_pixel(0,0,0)
             reponse.append(tampon)
             tampon=uart.read(1)
-        tension_V=int.from_bytes(reponse[-2],'big')/10
+        if len(reponse)!=0:
+            tension_V=int.from_bytes(reponse[-2],'big')/10
+        else:
+            tension_V=0
         return(tension_V)
 
 th1, th2, th3 = 1.047, 3.141, 5.235
@@ -173,5 +171,3 @@ def deplacement_robot(vitesse_long_mm_s, vitesse_lat_mm_s,vitesse_rot_mrad_s):
     mot1.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
     mot2.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
     mot3.deplacement(vitesse_long_mm_s,vitesse_lat_mm_s,-vitesse_rot_mrad_s)
-
-

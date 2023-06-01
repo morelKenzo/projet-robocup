@@ -4,11 +4,9 @@ from mx12 import *
 from telecom import *
 from initialisation import *
 
-
 def testRoutine():    
     """Fonction de test qui consiste a faire faire un carré"""
     #test roue
-
     deplacement_robot(200,0,0)
     sleep(1000)
     deplacement_robot(0,200,0)
