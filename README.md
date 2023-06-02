@@ -16,7 +16,7 @@ Le registre <b>Return Delay Time</b> doit être réglé à <i>100 μs</i>.
 Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
 <p float="left">
   <img src="./img-readme/wizard-delay.png" width="60%" height="60%" />
-  <img src="./img-readme/delay-time.png" width="20%" height="20%" />
+  <img src="./img-readme/delay-time.png" width="15%" height="15%" />
 </p>
 <h3>Configuration de l'identifiant du robot et du canal de transmission</h3>
 Par défaut l'identifiant du robot est égal à 0 et le canal de transmission à 10.
