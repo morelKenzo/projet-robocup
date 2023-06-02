@@ -9,13 +9,10 @@ Ces registres peuvent être changés à l'aide du logiciel dynamixel-wizard :
 <br>
 Il est nécessaire d'avoir un module de communication entre l'ordinateur et les MX12.
 <h3>Identifiants de moteurs</h3>
+Pour changer l'identifiants des moteurs, il suffit de changer le registre ID dans dynamixel wizard.
 Les identifiants des moteurs doivent être réglés dans l'ordre indiqué par l'image suivante : 
-<p align="center">
-  <img src="./img-readme/moteurs.jpg" width="60%" height="60%" />
-</p>
-Pour changer l'identifiants des moteurs, il suffit de changer le registre ID
-dans dynamixel wizard.
-<p align="center">
+<p align="left">
+  <img src="./img-readme/moteurs.jpg" width="50%" height="50%" />
   <img src="./img-readme/dynam-id.png" width="60%" height="60%" />
 </p>
 <h3>Réglage de return delay time</h3>
