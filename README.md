@@ -12,8 +12,8 @@ Il est nécessaire d'avoir un module de communication entre l'ordinateur et les 
 Pour changer l'identifiants des moteurs, il suffit de changer le registre ID dans dynamixel wizard.
 Les identifiants des moteurs doivent être réglés dans l'ordre indiqué par l'image suivante : 
 <p float="left">
-  <img src="./img-readme/moteurs.jpg" width="40%" height="40%" />
-  <img src="./img-readme/dynam-id.png" width="60%" height="60%" />
+  <img src="./img-readme/moteurs.jpg" width="30%" height="30%" />
+  <img src="./img-readme/dynam-id.png" width="50%" height="50%" />
 </p>
 <h3>Réglage de return delay time</h3>
 Le registre <b>Return Delay Time</b> doit être réglé à <i>100 μs</i>.
