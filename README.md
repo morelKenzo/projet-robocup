@@ -15,6 +15,7 @@ Les identifiants des moteurs doivent être réglés dans l'ordre indiqué par l'
   <img src="./img-readme/dynam-id.png" width="50%" height="50%" />
 </p>
 <h3>Réglage de return delay time</h3>
+Une fois l'identifiant changé, refaites un scan.
 Le registre <b>Return Delay Time</b> doit être réglé à <i>100 μs</i>.
 Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
 <p float="left">
