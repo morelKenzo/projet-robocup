@@ -1,5 +1,5 @@
 # PSL Robocup 2022 - 2023 : Informatique embarquée
-Collection des codes permettant de faire fonctionner les différents organes du robot.
+Collection de codes permettant de faire fonctionner les différents organes du robot avec une microbit.
 <h1>Configuration d'un robot</h1>
 <h2>Configuration des moteurs MX12</h1>
 Plusieurs registres sont à modifier sur chaque MX12.
