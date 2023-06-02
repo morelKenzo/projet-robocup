@@ -13,13 +13,7 @@ Les identifiants des moteurs doivent être réglés selon l'image suivante :
 <img src="./img-readme/moteurs.jpg" width="80%" height="80%">
 <h3>Configuration de l'identifiant du robot et du canal de transmission</h3>
 Par défaut l'identifiant du robot est égal à 0 et le canal de transmission à 10.
-Un menu permettant de configurer l'identifiant du robot et le canal de transmission
-est disponible.
-Pour accéder à ce menu il suffit d'appuyer sur le bouton b.
-Pour changer la sélection, il faut appuyer sur le bouton b.
-Pour confirmer un choix, attendre 5 secondes sans rien toucher.
-En-dehors du menu, la ligne la plus haute indique l'identifiant du robot
-et la ligne juste en-desssous, le canal de transmission.
+Il faut les modifier dans le main.
 
 <h1>Structure du projet</h1>
 Tous les codes relatifs au robot sont dans le répertoire Robot.
