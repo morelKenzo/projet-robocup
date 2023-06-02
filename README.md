@@ -31,18 +31,13 @@ Pour les modifier, changer les valeurs de <i>idRobot</i> et de <i>groupe_canal</
 dans le fichier <i>main.py</i>.
 <h2>Téléversement vers la microbit</h2>
 Toujours sur l'IDE en ligne <a href="https://python.microbit.org/v/3">https://python.microbit.org/v/3</a>,
-avec <i>projet-code-robot.hex</i> d'ouvert et la microbit branché sur votre machine,
+avec <i>projet-code-robot.hex</i> d'ouvert et la microbit branchée sur votre ordinateur,
 appuyer sur <i>Send to micro:bit</i>.
 <h1>Structure du projet</h1>
 Tous les codes relatifs au robot sont dans le répertoire Robot.
 Tous les codes relatifs à l'émetteur sont dans le répertoir PC-Coach. 
 <h2>main.py</h2>
 Décrit le comportement du robot à l'aide des différents modules.
-
-<h2>menu.py</h2>
-Module permettant à l'utilisateur
-d'accéder à un menu où il peut modifier
-l'identifiant du robot et le canal de transmission.
 
 <h2>refpin.py</h2>
 Référence les pins utilisés avec des noms explicites.
