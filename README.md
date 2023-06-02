@@ -1,5 +1,5 @@
 # projet-robocup
-Codes permettant de faire fonctionner les robots du projet Saphire Robocup 2022-2023 .
+Ensemble des codes permettant de faire fonctionner les robots du projet Saphire Robocup 2022-2023 .
 
 <h1>Configuration d'un robot</h1>
 <h2>Configuration des moteurs MX12</h1>
@@ -11,14 +11,14 @@ Il est nécessaire d'avoir un module de communication entre l'ordinateur et les 
 <h3>Identifiants de moteurs</h3>
 Pour changer l'identifiants des moteurs, il suffit de changer le registre ID dans dynamixel wizard.
 Les identifiants des moteurs doivent être réglés dans l'ordre indiqué par l'image suivante : 
-<p float="center">
+<p float="left">
   <img src="./img-readme/moteurs.jpg" width="30%" height="30%" />
   <img src="./img-readme/dynam-id.png" width="50%" height="50%" />
 </p>
 <h3>Réglage de return delay time</h3>
 Le registre <b>Return Delay Time</b> doit être réglé à <i>100 μs</i>.
 Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
-<p float="center">
+<p float="left">
   <img src="./img-readme/wizard-delay.png" width="60%" height="60%" />
   <img src="./img-readme/delay-time.png" width="18%" height="18%" />
 </p>
