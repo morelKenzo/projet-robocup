@@ -21,7 +21,7 @@ Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
   <img src="./img-readme/wizard-delay.png" width="60%" height="60%" />
   <img src="./img-readme/delay-time.png" width="18%" height="18%" />
 </p>
-<h3>Configuration de l'identifiant du robot et du canal de transmission</h3>
+<h2>Configuration de l'identifiant du robot et du canal de transmission</h2>
 Par défaut l'identifiant du robot est égal à 0 et le canal de transmission à 10.
 Il faut les modifier dans le main.
 
