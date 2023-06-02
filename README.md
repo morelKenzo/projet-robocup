@@ -14,14 +14,10 @@ Les identifiants des moteurs doivent être réglés selon l'image suivante :
 <h3>Réglage de return delay time</h3>
 Le registre <b>Return Delay Time</b> doit être réglé à <i>100 μs</i>.
 Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
-<div class="row">
-  <div class="column">
-    <img src="./img-readme/wizard-delay.png" width="45%" height="45%">
-  </div>
-  <div class="column">
-    <img src="./img-readme/delay-time.png" width="30%" height="30%">
-  </div>
-</div>
+<p float="left">
+  <img src="./img-readme/wizard-delay.png" width="45%" height="45%" />
+  <img src="./img-readme/delay-time.png" width="30%" height="30%" />
+</p>
 <h3>Configuration de l'identifiant du robot et du canal de transmission</h3>
 Par défaut l'identifiant du robot est égal à 0 et le canal de transmission à 10.
 Il faut les modifier dans le main.
