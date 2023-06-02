@@ -17,7 +17,8 @@ class Telecom():
     Attention a ne pas envoyer deux message sur le meme canal radio.
     """
 
-    def __init__(self,canal):
+    def __init__(self,canal, idRobot):
+        self.idRobot = idRobot
         self.dict_donnees = {'vitesse_long_mm_s':0,'vitesse_lat_mm_s':0,'vitesse_rot_mrad_s':0,'charge':0,'puissance_tir':0,'angle_tir':0,'dribble':0}
         self.dernier_dict_donnees = {'vitesse_long_mm_s':0,'vitesse_lat_mm_s':0,'vitesse_rot_mrad_s':0,'charge':0,'puissance_tir':0,'angle_tir':0,'dribble':0}
         self.pixel = 0
@@ -28,9 +29,9 @@ class Telecom():
         radio.on()
         
         
-    def Decode_Message(self,msg_radio, idRobot):
+    def Decode_Message(self,msg_radio):
         
-        if int.from_bytes(msg_radio[0:1],'big')==idRobot:
+        if int.from_bytes(msg_radio[0:1],'big')==self.idRobot:
         #la conversion en entier signé n'est pas implémenté dans micropython
             vitesseL = int.from_bytes(msg_radio[1:3],'big')
             if vitesseL > 32767 :
@@ -51,7 +52,7 @@ class Telecom():
             self.dict_donnees['dribble']=int.from_bytes(msg_radio[10:11],'big')
     
     
-        if int.from_bytes(msg_radio[0:1],'big')==idRobot:
+        if int.from_bytes(msg_radio[0:1],'big')==self.idRobot:
             
             #la conversion en entier signé n'est pas implémenté dans micropython
             vitesseL = int.from_bytes(msg_radio[1:3],'big')
@@ -73,7 +74,7 @@ class Telecom():
             self.dict_donnees['dribble']=int.from_bytes(msg_radio[10:11],'big')
             
 
-    def receiveCommand(self, idRobot) :
+    def receiveCommand(self) :
         """Fonction qui récupère un message, décode le message et applique les demandes du coach.
         """
 
@@ -85,11 +86,11 @@ class Telecom():
             # et le 11 suivants pour le robot 1
             if len(msg_radio)>11:
                 msg1=msg_radio[:11]
-                self.Decode_Message(msg1, idRobot)
+                self.Decode_Message(msg1)
                 msg2=msg_radio[11:]
-                self.Decode_Message(msg2, idRobot)
+                self.Decode_Message(msg2)
             else:
-                self.Decode_Message(msg_radio, idRobot)
+                self.Decode_Message(msg_radio)
             self.t0=time.ticks_ms()
             if self.pixel == 1 :
                 display.set_pixel(1,0,9)
