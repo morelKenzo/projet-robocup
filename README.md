@@ -23,15 +23,15 @@ Il faut mettre 50 sur l'interface, l'unité étant de <i>2 μs</i>.
 </p>
 <h2>Configuration de l'identifiant du robot et du canal de transmission</h2>
 Depuis l'IDE en ligne <a href="https://python.microbit.org/v/3">https://python.microbit.org/v/3</a>,
-ouvrez le fichier <it>projet-code-robot.hex</it> présent dans le dossier <it>Robot</it> ou bien importez
-un par un par chaque module du dossier <it>Robot</it>. 
+ouvrez le fichier <i>projet-code-robot.hex</i> présent dans le dossier <it>Robot</it> ou bien importez
+un par un par chaque module du dossier <i>Robot</i>. 
 Par défaut l'identifiant du robot est égal à 0 et le canal de transmission à 10.
-Pour les modifier, changer les valeurs de <it>idRobot</it> et de <it>groupe_canal</it>
-dans le fichier <it>main.py</it>.
+Pour les modifier, changer les valeurs de <i>idRobot</i> et de <i>groupe_canal</i>
+dans le fichier <i>main.py</i>.
 <h2>Téléversement vers la microbit</h2>
 Toujours sur l'IDE en ligne <a href="https://python.microbit.org/v/3">https://python.microbit.org/v/3</a>,
-avec <it>projet-code-robot.hex</it> d'ouvert et la microbit branché sur votre machine,
-appuyer sur <it>Send to micro:bit</it>.
+avec <i>projet-code-robot.hex</i> d'ouvert et la microbit branché sur votre machine,
+appuyer sur <i>Send to micro:bit</i>.
 <h1>Structure du projet</h1>
 Tous les codes relatifs au robot sont dans le répertoire Robot.
 Tous les codes relatifs à l'émetteur sont dans le répertoir PC-Coach. 
