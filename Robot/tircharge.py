@@ -21,3 +21,4 @@ def commande_tir(prct):
     sleep(20 * (prct / 100))
     pin_tir.write_digital(0)
     charge_condo()
+    

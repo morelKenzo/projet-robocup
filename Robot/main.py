@@ -12,6 +12,7 @@ from initialisation import *
 from test import *
 import micropython
 
+
 micropython.kbd_intr(-1)
 initialisation()
 telecom = Telecom(groupe_canal)
@@ -21,5 +22,5 @@ telecom = Telecom(groupe_canal)
 testRoutine()
     
 while True:
-    afficher_menu(idRobot, groupe_canal)
-    telecom.receiveCommand()
+    afficher_menu()
+    telecom.receiveCommand(idRobot)

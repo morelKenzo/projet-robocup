@@ -12,11 +12,8 @@ from refpin import *
 from tircharge import *
 from mx12 import *
 
-idRobot = 0
-# Le numéro de canal est donné en argument de Telecom
-# Par convention, il doit être égal à :
-# numéro de l'équipe * 10
-groupe_canal = 10
+
+
 
 def Tension_robot():
     """Mesure de la tension du robot en faisnt la moyenne des tensions des moteurs"""

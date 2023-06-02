@@ -1,5 +1,5 @@
 ##################################
-# Les pins utilisées sont référencés dans
+#Les pins utilisées sont référencés dans
 #    ce module avec des noms clairs.
 ##################################
 

@@ -1,12 +1,21 @@
 from microbit import *
 
+
 ##################################
 # Module permettant à l'utilisateur
 # d'accéder à un menu où il peut modifier
 # l'identifiant du robot et le canal de transmission.
 ##################################
 
-def afficher_menu(idRobot, groupe_canal):
+idRobot = 0
+# Le numéro de canal est donné en argument de Telecom
+# Par convention, il doit être égal à :
+# numéro de l'équipe * 10
+groupe_canal = 10
+
+def afficher_menu():
+    global idRobot
+    global groupe_canal
     display.set_pixel(4, idRobot, 9)
     numero_groupe = int(groupe_canal/10)
     display.set_pixel(3, numero_groupe - 1, 9)
