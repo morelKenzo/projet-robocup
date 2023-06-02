@@ -11,11 +11,13 @@ from initialisation import *
 from test import *
 import micropython
 
-idRobot = 1
+# L'identifiant du robot est donné en argument de Telecom.
+# Il vaut soit 0 soit 1
+idRobot = 0
 # Le numéro de canal est donné en argument de Telecom
 # Par convention, il doit être égal à :
 # numéro de l'équipe * 10
-groupe_canal = 30
+groupe_canal = 10
 
 micropython.kbd_intr(-1)
 initialisation()
