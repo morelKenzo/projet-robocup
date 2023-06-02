@@ -1,6 +1,6 @@
-# projet-robocup
-Ensemble des codes permettant de faire fonctionner les robots du projet Saphire Robocup 2022-2023 .
-
+# PSL Robocup 2022 - 2023 : Informatique embarquée
+Collection des codes permettant de faire fonctionner les différents organes du robot tels que 
+les servomoteurs des roues, le dribbleur et le tir.
 <h1>Configuration d'un robot</h1>
 <h2>Configuration des moteurs MX12</h1>
 Plusieurs registres sont à modifier sur chaque MX12.
