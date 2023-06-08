@@ -5,19 +5,16 @@
 #     on signifie que c'est pas bon avec de la musique
 ##################################
 
-
 from microbit import *
 import music
 from refpin import *
 from tircharge import *
 from mx12 import *
 
-
-
-
 def Tension_robot():
-    """Mesure de la tension du robot en faisnt la moyenne des tensions des moteurs"""
-    
+    """
+    Mesure de la tension du robot en faisnt la moyenne des tensions des moteurs
+    """
     Tension_mot1=mot1.demandeTension()
     sleep(20)
     Tension_mot2=mot2.demandeTension()
